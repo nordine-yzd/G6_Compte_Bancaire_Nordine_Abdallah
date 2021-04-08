@@ -63,7 +63,11 @@ public class Agence {
 	
 	public static void toString(Agence listeAgences[]) {
 		for(int i=0; i <= listeAgences.length-1; i++) {
-			System.out.println("[Agence "+ listeAgences[i].id + "]:" + "\n***********" +"\nCode d'Agence: " + listeAgences[i].getCodeAgence()+ "\nNom du Agence: " + listeAgences[i].getNomAgence()  +"\nAdresse d'Agence: " + listeAgences[i].getAdresse() + "\n");
+			System.out.println("\n[Agence "+ listeAgences[i].id + "]:" 
+					+"\nCode d'Agence: " + listeAgences[i].getCodeAgence()
+					+ "\nNom du Agence: " + listeAgences[i].getNomAgence()  
+					+"\nAdresse d'Agence: " + listeAgences[i].getAdresse() 
+					+ "\n");
 		}
 	}
 
@@ -80,17 +84,21 @@ public class Agence {
 				
 				int id = i+1;
 				
-				System.out.println("Donner le Code d'Agence Numero " + id + " :");
+				System.out.println("Donner le Code d'Agence No. " + id + " :");
 				int codeAgence = sc.nextInt();
+				if (codeAgence > 99 && codeAgence < 1000) {
 					
-				System.out.println("Donner le Nom d'Agence Numero " + id + " :");
-				String nomAgence = sc.next();
-					
-				System.out.println("Donner l'Adresse d'Agence Numero " + id + " :");
-				String adresse = sc.next();
-					
-				listeAgences[i] = new Agence( id, codeAgence,  nomAgence, adresse);
-
+					System.out.println("Donner le Nom d'Agence No. " + id + " :");
+					String nomAgence = sc.next();
+						
+					System.out.println("Donner l'Adresse d'Agence No. " + id + " :");
+					String adresse = sc.next();
+						
+					listeAgences[i] = new Agence( id, codeAgence,  nomAgence, adresse);
+				} else {
+					System.out.println("Code d'Agence contient 3 chiffres");
+					return listeAgences();
+				}
 			}
 
 			return listeAgences;
