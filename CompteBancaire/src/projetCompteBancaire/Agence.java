@@ -63,7 +63,7 @@ public class Agence {
 	
 	public static void toString(Agence listeAgences[]) {
 		for(int i=0; i <= listeAgences.length-1; i++) {
-			System.out.println("\n[Agence "+ listeAgences[i].id + "]:" 
+			System.out.println("\n[Agence "+ listeAgences[i].getId() + "]:" 
 					+"\nCode d'Agence: " + listeAgences[i].getCodeAgence()
 					+ "\nNom du Agence: " + listeAgences[i].getNomAgence()  
 					+"\nAdresse d'Agence: " + listeAgences[i].getAdresse() 
@@ -76,27 +76,27 @@ public class Agence {
 		
 		try (Scanner sc = new Scanner(System.in)) {
 			System.out.println("Combien d'Agence Vous Voulez Ajouter? : ");
-			int nbAgence = sc.nextInt();
+			int nbAgences = sc.nextInt();
 			
-			Agence listeAgences[] = new Agence[nbAgence];
+			Agence listeAgences[] = new Agence[nbAgences];
 			
-			for(int i = 0 ; i <= nbAgence-1 ; i++) {
+			for(int i = 0 ; i <= nbAgences-1 ; i++) {
+				listeAgences[i] = new Agence();
+				listeAgences[i].setId(i);
 				
-				int id = i+1;
+				System.out.println("Donner le Code d'Agence: ");
+				listeAgences[i].setCodeAgence(sc.nextInt()); 
 				
-				System.out.println("Donner le Code d'Agence No. " + id + " :");
-				int codeAgence = sc.nextInt();
-				if (codeAgence > 99 && codeAgence < 1000) {
+				if (listeAgences[i].getCodeAgence() > 99 && listeAgences[i].getCodeAgence() < 1000) {
 					
-					System.out.println("Donner le Nom d'Agence No. " + id + " :");
-					String nomAgence = sc.next();
+					System.out.println("Donner le Nom d'Agence: ");
+					listeAgences[i].setNomAgence(sc.next());
 						
-					System.out.println("Donner l'Adresse d'Agence No. " + id + " :");
-					String adresse = sc.next();
-						
-					listeAgences[i] = new Agence( id, codeAgence,  nomAgence, adresse);
+					System.out.println("Donner l'Adresse d'Agence: ");
+					listeAgences[i].setAdresse(sc.next());
+					
 				} else {
-					System.out.println("Code d'Agence contient 3 chiffres");
+					System.out.println("Le Code D'Agence Doit Contenir 3 chiffres");
 					return listeAgences();
 				}
 			}
